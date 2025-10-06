@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Address Book</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+    <h1>Address Books</h1>
+    <ul>
+        <li th:each="book : ${addressBooks}">
+            <span th:text="'Addressbook ' + ${book.id}"></span>
+            <ul>
+                <li th:each="buddy : ${book.buddies}">
+                    <span th:text="${buddy.name}"></span> -
+                    <span th:text="${buddy.phoneNumber}"></span>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    </body>
+</html>
