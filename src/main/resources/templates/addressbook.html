@@ -1,12 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Address Book</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    </head>
-    <body>
+<head>
+    <title>Address Book</title>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/addressbook.js"></script>
+</head>
+<body>
     <h1>Address Books</h1>
-    <ul>
+    <ul id="addressBooksList">
         <li th:each="book : ${addressBooks}">
             <span th:text="'Addressbook ' + ${book.id}"></span>
             <ul>
@@ -15,7 +17,25 @@
                     <span th:text="${buddy.phoneNumber}"></span>
                 </li>
             </ul>
+            <button th:attr="data-id=${book.id}" class="deleteBtn">Delete</button>
         </li>
     </ul>
-    </body>
+    <hr/>
+    <h1>Create a New AddressBook</h1>
+    <form id="addAddressBookForm">
+        <div class="buddy-input">
+            <input type="text" name="buddyName" placeholder="Buddy Name 1" required />
+            <input type="text" name="buddyPhone" placeholder="Phone Number 1" required />
+        </div>
+        <div class="buddy-input">
+            <input type="text" name="buddyName" placeholder="Buddy Name 2" />
+            <input type="text" name="buddyPhone" placeholder="Phone Number 2" />
+        </div>
+        <div class="buddy-input">
+            <input type="text" name="buddyName" placeholder="Buddy Name 3" />
+            <input type="text" name="buddyPhone" placeholder="Phone Number 3" />
+        </div>
+        <button type="submit">Create AddressBook</button>
+    </form>
+</body>
 </html>
